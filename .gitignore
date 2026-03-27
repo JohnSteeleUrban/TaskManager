@@ -416,3 +416,17 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Frontend build output
+dist/
+
+# Claude Code
+.claude/
+
+IMPLEMENTATION_PLAN.md
+CLAUDE.md
