@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-The frontend starts at `http://localhost:5173`. Register a new account and you're good togo!.
+The frontend starts at `http://localhost:5173`. Register a new account and you're good to go!
 
 ## Tech Stack
 
@@ -35,9 +35,9 @@ The frontend starts at `http://localhost:5173`. Register a new account and you'r
 - **Frontend:** Vue 3 + TypeScript, PrimeVue, Pinia, Axios, Vite
 - **Testing:** xUnit, Moq
 
-I went with .NET 10 since it's the current LTS. SQLite over the EF in-memory provider because it's a real relational database that enforces constraints the same way SQL Server or my preferred production db: Postgres. 
+I went with .NET 10 since it's the current LTS. SQLite over the EF in-memory provider because it's a real relational database that enforces constraints the same way SQL Server or my preferred production db, Postgres, would.
 
-**I have not done much front end engineering for a long time.** Ezra uses Vue And after some research I found that PrimeVue gives you a polished UI fast without spending time on custom CSS. Given that Vue unfamiliar territory for me, I leveraged AI quite a bit as well as good old Google to find the common patterns and best practices on the front end.
+**I have not done much front end engineering for a long time.** Ezra uses Vue and after some research I found that PrimeVue gives you a polished UI fast without spending time on custom CSS. Given that Vue is unfamiliar territory for me, I leveraged AI quite a bit as well as good old Google to find the common patterns and best practices on the front end.
 
 **The backend of the stack is where I live.**  I have included some of the patterns I prefer and you can even checkout my other test repos in my github to see some similarities.  
 
@@ -60,9 +60,9 @@ TaskManager.Api/
 TaskManager.Tests/ Unit tests for services and validators
 ```
 
-The backend is a prettystandard layered approach. Separation of concerns in: Controllers, Repositories. Simple N-Tier style stuff.
+The backend is a pretty standard layered approach. Separation of concerns in: Controllers, Services, Repositories. Simple N-Tier style stuff.
 
-The frontend uses Vue's Composition API with Pinia for state management. An Axios instance handles JWT injection directs. API calls are wrapped in service functions so components never call Axios directly.
+The frontend uses Vue's Composition API with Pinia for state management. An Axios instance handles JWT injection and 401 redirects. API calls are wrapped in service functions so components never call Axios directly.
 
 ## API Endpoints
 
@@ -80,7 +80,7 @@ Auth endpoints are public. Task endpoints require a valid JWT.
 
 The task list endpoint supports query params: `status`, `priority`, `sortBy`, `sortDirection`, `pageNumber`, `pageSize`.
 
-Swagger at `/swagger` 
+Swagger at `/swagger` when running locally.
 
 ## Auth
 
@@ -94,11 +94,11 @@ Using UUID v7 (`Guid.CreateVersion7()`) for primary keys. They're time-ordered, 
 
 ## Error Handling
 
-Global exception middleware catches unhandled exceptions, logs and returns a generic 500. No stack traces leak to the client. Validation is from FluentValidation
+Global exception middleware catches unhandled exceptions, logs and returns a generic 500. No stack traces leak to the client. Validation is from FluentValidation.
 
 ## Testing
 
-tests cover the service layer and validators.
+Tests cover the service layer and validators.
 
 ## Trade-offs
 
@@ -112,7 +112,7 @@ tests cover the service layer and validators.
 A few things in here that are just how I prefer to write code.
 
 - **IConfiguration extension methods** instead of magic strings everywhere. `configuration.GetJwtKey()` beats `configuration["Jwt:Key"]` because if the config key changes you fix it in one place. Small thing but it keeps things clean.
-- **Implicit operators on DTOs** for entity-to-DTO mapping. `TaskItem` converts to `TaskResponse` automatically without a mapper method or a library like AutoMapper. Its super clean.
+- **Implicit operators on DTOs** for entity-to-DTO mapping. `TaskItem` converts to `TaskResponse` automatically without a mapper method or a library like AutoMapper. It's super clean.
 - **Tuple returns on service methods**. Keeps things simple without creating a one-off result wrapper class for every operation. 
 - **UUID v7 for primary keys** via `Guid.CreateVersion7()`. Time-ordered so they play nice with indexes. Doesn't matter much on SQLite but it's a good habit and if this moved to SQL Server or Postgres in production it avoids index fragmentation from random v4 GUIDs.
 
