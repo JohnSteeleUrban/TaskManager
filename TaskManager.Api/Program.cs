@@ -89,8 +89,16 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// serve the vue frontend from wwwroot when running in docker
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
+
+// SPA fallback: any route that isn't an API endpoint or static file gets index.html
+// so vue router can handle client-side routing
+app.MapFallbackToFile("index.html");
 
 app.Run();

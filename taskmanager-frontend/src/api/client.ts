@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '../router'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:5225/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json'
   }

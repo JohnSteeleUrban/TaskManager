@@ -1,0 +1,16 @@
+**/.vs
+**/.vscode
+**/.git
+**/.gitignore
+**/bin
+**/obj
+**/node_modules
+**/dist
+**/.env
+*.db
+*.db-shm
+*.db-wal
+.claude/
+IMPLEMENTATION_PLAN.md
+CLAUDE.md
+README.md
