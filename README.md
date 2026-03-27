@@ -1,6 +1,8 @@
 # TaskManager
 
-A full-stack task management app built with .NET 10 and Vue 3. Users can register, log in, and manage their own tasks with filtering, sorting, and pagination.
+A full-stack task management app built with .NET 10 and Vue 3. Users can register, log in, and manage their own tasks with filtering, sorting, and pagination. Deployed to Digital Ocean App Platform in a Docker container.
+
+**Live demo:** [https://task-app-y4jp2.ondigitalocean.app](https://task-app-y4jp2.ondigitalocean.app)
 
 ![alt text](image.png)
 
