@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--p-font-family);
+  color: var(--p-text-color);
+  background: var(--p-surface-ground);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--p-primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.w-full {
+  width: 100%;
+}
